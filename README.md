@@ -16,9 +16,11 @@ shdoc will match comments in the following form on top of a script file:
 
 Will produce following output:
 
+```markdown
 # Title of file script
 
 Small description of the script.
+```
 
 ## Function tags
 
@@ -53,7 +55,7 @@ above on the stdin and will markdown output result on the stdout.
 it also supports tag @internal, which disables documentation generation for function that has the tag in heading comment
 
 Will produce following output:
-
+````markdown
 ## some:first:func()
 
 Multiline description goes here and
@@ -93,3 +95,8 @@ See example documentation on:
 
 * [tests.sh](https://github.com/reconquest/tests.sh/blob/master/REFERENCE.md)
 * [coproc.bash](https://github.com/reconquest/coproc.bash/blob/master/REFERENCE.md)
+````
+
+When you want to skip documentation generation for particular function, use `@internal` tag.
+It allows you to have the same style of doc comments across the script and keep internal
+functions hidden from users
