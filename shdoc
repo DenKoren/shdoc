@@ -1,4 +1,4 @@
-#!/usr/bin/awk -f
+#!/usr/bin/env awk -f
 
 BEGIN {
     if (! style) {
@@ -160,12 +160,13 @@ is_tag("example") {
         in_example = 1
     }
 
-    sub(/^[[:space:]]*# @example /, "")
+    line = uncomment($0)
+    sub(/^@example ?/, "", line)
 
-    if ($0 == "") {
+    if (line == "") {
         docblock = docblock "\n" render("h3", "Example")
     } else {
-        docblock = docblock "\n" render("h3", "Example: " $0)
+        docblock = docblock "\n" render("h3", "Example: " line)
     }
 }
 
